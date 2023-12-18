@@ -10,6 +10,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
 import SongsPage from './pages/SongsPage';
 import AddSongForm from './components/AddSongForm';
+import Details from './components/Details';
 
 function App() {
     const audioRef = useRef<HTMLAudioElement>(null);
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/songs" element={<SongsPage />} />
                 <Route path="/new-song" element={<AddSongForm />} />
+                <Route path="/details/:id" element={<Details />} />
             </Routes>
             <audio ref={audioRef}>
                 <source src={audioSource} type="audio/mp3" />

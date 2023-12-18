@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import img from '../assets/image/music.png';
+import img2 from '../assets/image/guitar.png';
+import img3 from '../assets/image/music-note.png';
+import img4 from '../assets/image/music (1).png';
 
 const services = [
     { title: 'song 1', description: 'Description 1', picture: 'picture1.jpg' },
@@ -17,9 +21,10 @@ export const SongList = () => {
     let filteredService = services.filter((service) => service.title.toLowerCase().includes(searchInput.toLowerCase()));
     let content = (
         <div className="flex flex-wrap gap-6 md:gap-0 -mx-2 mb-10">
-            {filteredService.map((item) => (
+            {filteredService.map((item, index) => (
                 <div className="w-full md:w-1/2 md:mt-4 lg:w-1/3 h-auto px-4" key={item.title}>
-                    <div
+                    <Link
+                        to={`/details/${index}`}
                         className="
           p-4
           pt-9
@@ -36,7 +41,7 @@ export const SongList = () => {
           transition duration-300 ease-in-out
           flex
           flex-col
-          justify-start
+          justify-center
           relative
           group
           overflow-hidden
@@ -44,16 +49,19 @@ export const SongList = () => {
         "
                     >
                         <h4 className="relative z-10 font-semibold font-raleway text-2xl text-dark mb-3">{item.title}</h4>
-                        <div className=" relative z-10 w-1/3 h-1.5 bg-secondColor mb-4" />
+                        <div className=" relative z-10 w-1/3 h-1 bg-secondColor mb-4" />
                         <p className=" relative z-10 text-body-color text-sm font-poppins">{item.description}</p>
                         <p className=" relative z-10 text-body-color text-sm font-poppins">{item.description}</p>
                         <p className=" relative z-10 text-body-color text-sm font-poppins">{item.description}</p>
                         <img
                             className=" absolute z-0 top-0 left-0 invisible object-center object-cover group-hover:visible h-full w-full bg-black transition duration-200 ease-in-out group-hover:brightness-50 group-hover:opacity-80 group-hover:scale-110"
-                            src={item.picture}
+                            src={index % 2 === 0 ? img : img2}
                             alt="img"
                         />
-                    </div>
+                        <div className="absolute right-0 bottom-10 w-16 h-16 flex justify-center rounded-full top-0">
+                            <img src={index % 2 === 0 ? img4 : img3} alt="" />
+                        </div>
+                    </Link>
                 </div>
             ))}
         </div>

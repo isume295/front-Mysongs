@@ -16,6 +16,7 @@ module.exports = {
                 customDark: 'rgba(6, 15, 21, 0.7)',
                 customDarkRed: 'rgba(94, 22, 29, 0.5)',
                 custumBlue: '#9883E5',
+                highlight: '#52FFEE',
             },
         },
     },
