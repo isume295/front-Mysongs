@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import baseURL from '../baseURL';
+import { get } from 'http';
 
 type Statistics = {
     totalSongs: number;
@@ -16,16 +17,6 @@ type InitialState = {
     error: boolean;
 };
 
-export const fetchStatistics = createAsyncThunk('statistics/fetchStatistics', async (thunkAPI) => {
-    const url = `${baseURL}/statistics`;
-    try {
-        const response = await axios.get(url);
-        return response.data;
-    } catch (error: any) {
-        return error;
-    }
-});
-
 const initialState: InitialState = {
     statistics: [],
     isLoading: false,
@@ -35,24 +26,21 @@ const initialState: InitialState = {
 const statisticSlice = createSlice({
     name: 'statistics',
     initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-            // Fetch Statistics
-            .addCase(fetchStatistics.pending, (state) => {
-                state.isLoading = true;
-            })
-            .addCase(fetchStatistics.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.statistics.push(action.payload);
-                console.log('this is ur state', state.statistics);
-            })
-            .addCase(fetchStatistics.rejected, (state, action) => {
-                state.isLoading = false;
-                state.error = true;
-                state.errMsg = action.payload;
-            });
+    reducers: {
+        getStatisticsPending: (state) => {
+            state.isLoading = true;
+        },
+        getStatisticsSuccess: (state, action) => {
+            state.isLoading = false;
+            state.statistics.push(action.payload);
+        },
+        getStatisticsFailure: (state, action) => {
+            state.isLoading = false;
+            state.error = true;
+            state.errMsg = action.payload;
+        },
     },
 });
 
+export const { getStatisticsPending, getStatisticsSuccess, getStatisticsFailure } = statisticSlice.actions;
 export default statisticSlice.reducer;

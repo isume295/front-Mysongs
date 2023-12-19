@@ -1,34 +1,18 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import audioReducer from './audio/audioSlice';
 import statisticReducer from './statistics/statisticSlice';
 import createSagaMiddleware from 'redux-saga';
-import { SagaMiddleware } from 'redux-saga';
-import { applyMiddleware } from 'redux';
-import getDefaultMiddleware from 'redux-saga';
+import statisticsSaga from './statistics/statisticSaga';
 
-// interface RootState {
-//     audio: any;
-//     statistics: any;
-// }
-
-const saga: SagaMiddleware = createSagaMiddleware();
+const saga: any = createSagaMiddleware();
 
 const store = configureStore({
     reducer: {
-        audio: audioReducer,
         statistics: statisticReducer,
     },
-    // middleware: (getDefaultMiddleware) =>
-    //     getDefaultMiddleware({
-    //         thunk: {
-    //             extraArgument: saga,
-    //         },
-    //         serializableCheck: false,
-    //     }),
-    // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(saga),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(saga),
 });
+saga.run(statisticsSaga);
 
-// export const audioSelector = (state: RootState) => state.audio;
 export const statisticsSelector = (state: RootState) => state.statistics;
 export default store;
 export type AppDispatch = typeof store.dispatch;
