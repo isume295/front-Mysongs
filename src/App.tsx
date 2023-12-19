@@ -4,7 +4,6 @@ import { Hero } from './components/Hero';
 import { Navbar } from './components/Navbar';
 import audioSource from './assets/audio/Sappheiros - Embrace.mp3';
 import { useSelector } from 'react-redux';
-import { audioSelector } from './redux/store';
 import { Statistics } from './components/Statistics';
 import { Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';

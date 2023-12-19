@@ -7,20 +7,24 @@ import { Wave } from './Wave';
 type Icon = {
     label: string;
     source: string;
+    body: string;
 };
 
 const icons: Icon[] = [
     {
-        label: 'Icon 1',
+        label: 'Curated Playlists',
         source: img,
+        body: 'hese thoughtfully crafted playlists provide a seamless listening experience, allowing users to explore and enjoy handpicked tracks',
     },
     {
-        label: 'Icon 2',
+        label: 'Artist Statistics',
         source: img2,
+        body: 'comprehensive statistics and insights about artists. Users can access information such as an artists top tracks, and popularity rankings ',
     },
     {
-        label: 'Icon 3',
+        label: 'Personalized',
         source: img3,
+        body: 'By analyzing user data the website suggests tailored music collections to enhance the users music discovery experience.',
     },
 ];
 
@@ -42,9 +46,10 @@ export const Hero = () => {
                             <div className="items-center flex flex-wrap">
                                 <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto flex flex-col justify-center items-center text-center">
                                     <div className="pr-12">
-                                        <h1 className="text-white font-semibold text-5xl">Your story starts with us.</h1>
+                                        <h1 className="text-white font-semibold text-5xl"> The Best of the Best!</h1>
                                         <p className="mt-4 text-lg mb-4 text-gray-200">
-                                            This is a simple example of a Landing Page you can build using Notus JS. It features multiple CSS components based on the Tailwind CSS design system.
+                                            Essential Music Collections: A handpicked selection of timeless classics, chart-topping hits, and hidden gems, curated for the ultimate music aficionado's
+                                            listening pleasure.
                                         </p>
                                         <Wave />
                                     </div>
@@ -67,10 +72,8 @@ export const Hero = () => {
                                                 <div className={`text-white p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-5 shadow-lg rounded-full  `}>
                                                     <img src={icon.source} alt={icon.label} />
                                                 </div>
-                                                <h6 className="text-xl font-semibold">Awarded Agency</h6>
-                                                <p className="mt-2 mb-4 text-blueGray-500">
-                                                    Divide details about your product or agency work into parts. A paragraph describing a feature will be enough.
-                                                </p>
+                                                <h6 className="text-xl font-semibold">{icon.label}</h6>
+                                                <p className="mt-2 mb-4 text-blueGray-500">{icon.body}</p>
                                             </div>
                                         </div>
                                     </div>
