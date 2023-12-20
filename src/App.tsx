@@ -15,7 +15,7 @@ import { GenrePage } from './pages/GenrePage';
 
 function App() {
     return (
-        <div className="App bg-gray-50 h-screen relative">
+        <div className="App bg-gray-50 relative">
             <ToastContainer />
             <Navbar />
             <Routes>
