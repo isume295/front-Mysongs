@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { useAppDispatch } from '../redux/hooks';
 import { postSongPending } from '../redux/songs/songSlice';
 
+// validation schema
 const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
     artist: Yup.string().required('artist is required'),
@@ -17,6 +18,7 @@ export default function AddSongForm() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
+    // on submit handler
     const onSubmit = async (values: any, { setSubmitting, setErrors }: any): Promise<void> => {
         try {
             dispatch(postSongPending(values));
@@ -89,7 +91,6 @@ export default function AddSongForm() {
                                                 name="artist"
                                                 placeholder="artist"
                                                 className="border px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                // value="jesse@example.com"
                                             />
                                             <ErrorMessage name="artist" component="div" className="text-red-500  flex items-start" />
                                         </div>

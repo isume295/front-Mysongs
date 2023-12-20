@@ -80,7 +80,7 @@ export const SongList = () => {
         );
     }
     return (
-        <div className=" relative w-5/6 items-center object-center mx-auto px-4 pt-10 pb-15">
+        <div className=" relative w-5/6 items-center object-center mx-auto px-4 pt-10 pb-15 mb-10">
             <div className=" pb-12">
                 <Link to="/new-song" className=" px-10 py-2 rounded text-white bg-custumBlue font-railway-500 ">
                     Add new Song

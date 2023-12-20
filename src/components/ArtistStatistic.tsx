@@ -78,7 +78,7 @@ export const ArtistStatistic = () => {
         );
     }
     return (
-        <div className=" relative w-5/6 items-center object-center mx-auto px-4 pt-10 pb-15">
+        <div className=" relative w-5/6 items-center object-center mx-auto px-4 pt-10 pb-15 mb-10">
             <div className=" pb-12">
                 <h1 className="font-bold pt-10 lg:pt-0 text-mainColor font-railway-500 text-3xl pb-10 underline-offset-2">Albums</h1>
                 <h3 className="">
