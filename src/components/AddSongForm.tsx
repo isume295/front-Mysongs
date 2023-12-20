@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../redux/hooks';
+import { postSongPending } from '../redux/songs/songSlice';
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
@@ -14,13 +15,14 @@ const validationSchema = Yup.object().shape({
 
 export default function AddSongForm() {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const onSubmit = async (values: any, { setSubmitting, setErrors }: any): Promise<void> => {
         try {
-            console.log(values);
-            // toast.success("successfully added new song");
-            // setSubmitting(false);
-            // navigate('/song');
+            dispatch(postSongPending(values));
+            toast.success('successfully added new song');
+            setSubmitting(false);
+            navigate('/songs');
         } catch (error) {
             setSubmitting(false);
             setErrors(error);

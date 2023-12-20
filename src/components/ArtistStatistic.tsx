@@ -14,7 +14,7 @@ const services = [
     { title: 'song 3', description: 'Description 3', picture: 'picture3.jpg' },
 ];
 
-export const SongList = () => {
+export const ArtistStatistic = () => {
     const { songs, isLoading } = useAppSelector(songSelector);
 
     const [searchInput, setSearchInput] = useState('');
