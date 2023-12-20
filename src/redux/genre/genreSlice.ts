@@ -1,35 +1,35 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type Album = {
-    album: string;
+type Genre = {
+    genre: string;
     songCount: number;
 };
 
 type InitialState = {
-    albums: Album[];
+    genres: Genre[];
     isLoading: boolean;
     errMsg: any;
     error: boolean;
 };
 
 const initialState: InitialState = {
-    albums: [],
+    genres: [],
     isLoading: false,
     errMsg: '',
     error: false,
 };
-const albumSlice = createSlice({
-    name: 'albums',
+const genreSlice = createSlice({
+    name: 'genres',
     initialState,
     reducers: {
-        getAlbumPending: (state) => {
+        getGenrePending: (state) => {
             state.isLoading = true;
         },
-        getAlbumSuccess: (state, action) => {
+        getGenreSuccess: (state, action) => {
             state.isLoading = false;
-            state.albums = action.payload;
+            state.genres = action.payload;
         },
-        getAlbumFailure: (state, action) => {
+        getGenreFailure: (state, action) => {
             state.isLoading = false;
             state.error = true;
             state.errMsg = action.payload;
@@ -37,5 +37,5 @@ const albumSlice = createSlice({
     },
 });
 
-export const { getAlbumPending, getAlbumSuccess, getAlbumFailure } = albumSlice.actions;
-export default albumSlice.reducer;
+export const { getGenrePending, getGenreSuccess, getGenreFailure } = genreSlice.actions;
+export default genreSlice.reducer;

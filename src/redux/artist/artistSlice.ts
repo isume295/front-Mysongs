@@ -28,7 +28,7 @@ const artistSlice = createSlice({
         },
         getArtistSuccess: (state, action) => {
             state.isLoading = false;
-            state.artists.push(action.payload);
+            state.artists = action.payload;
         },
         getArtistFailure: (state, action) => {
             state.isLoading = false;

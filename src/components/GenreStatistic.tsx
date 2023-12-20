@@ -4,11 +4,12 @@ import img from '../assets/image/music.png';
 import img2 from '../assets/image/guitar.png';
 import img3 from '../assets/image/artist1.png';
 import img4 from '../assets/image/artist2.png';
-import { artistSelector } from '../redux/store';
+import { genreSelector } from '../redux/store';
 import { useAppSelector } from '../redux/hooks';
+import LoadingScreen from './LoadingScreen';
 
-export const ArtistStatistic = () => {
-    const { artists, isLoading } = useAppSelector(artistSelector);
+export const GenreStatistic = () => {
+    const { genres, isLoading } = useAppSelector(genreSelector);
 
     const [searchInput, setSearchInput] = useState('');
 
@@ -17,13 +18,13 @@ export const ArtistStatistic = () => {
     };
     let content;
     if (isLoading) {
-        return <h1>is loading .....</h1>;
-    } else if (!isLoading && artists.length > 0) {
-        let filteredArtist = artists.filter((artist) => artist.artist.toLowerCase().includes(searchInput.toLowerCase()));
+        return <LoadingScreen />;
+    } else if (!isLoading && genres.length > 0) {
+        let filteredGenre = genres.filter((genre) => genre.genre.toLowerCase().includes(searchInput.toLowerCase()));
 
         content = (
             <div className="flex flex-wrap gap-6 md:gap-0 -mx-2 mb-10">
-                {filteredArtist.map(
+                {filteredGenre.map(
                     (item, index) =>
                         item && (
                             <div className="w-full md:w-1/2 md:mt-4 lg:w-1/3 h-auto px-4" key={index}>
@@ -51,10 +52,9 @@ export const ArtistStatistic = () => {
           rounded
         "
                                 >
-                                    <h4 className="relative z-10 font-semibold font-raleway text-2xl text-dark mb-3">{item.artist}</h4>
+                                    <h4 className="relative z-10 font-semibold font-raleway text-2xl text-dark mb-3">{item.genre}</h4>
                                     <div className=" relative z-10 w-1/3 h-1 bg-secondColor mb-4" />
                                     <p className=" relative z-10 text-body-color text-sm font-poppins">Songs: {item.songCount}</p>
-                                    <p className=" relative z-10 text-body-color text-sm font-poppins">Albums: {item.albumCount}</p>
                                     <img
                                         className=" absolute z-0 top-0 left-0 invisible object-center object-cover group-hover:visible h-full w-full bg-black transition duration-200 ease-in-out group-hover:brightness-50 group-hover:opacity-80 group-hover:scale-110"
                                         src={index % 2 === 0 ? img : img2}
@@ -79,7 +79,7 @@ export const ArtistStatistic = () => {
     return (
         <div className=" relative w-5/6 items-center object-center mx-auto px-4 pt-10 pb-15">
             <div className=" pb-12">
-                <h1 className="font-bold pt-10 lg:pt-0 text-mainColor font-railway-500 text-3xl pb-10 underline-offset-2">Albums</h1>
+                <h1 className="font-bold pt-10 lg:pt-0 text-mainColor font-railway-500 text-3xl pb-10 underline-offset-2">Genre</h1>
                 <h3 className="">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias voluptates praesentium possimus ex quisquam placeat totam officiis atque facere deserunt sint, debitis, tempore
                     assumenda dignissimos error! Earum veniam error asperiores.

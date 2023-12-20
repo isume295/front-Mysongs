@@ -18,7 +18,6 @@ const SongsPage = () => {
     return (
         <div>
             <SongList />
-            hi
         </div>
     );
 };

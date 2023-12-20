@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AlbumsPage } from './pages/AlbumsPage';
 import { ArtistsPage } from './pages/ArtistsPage';
+import { GenrePage } from './pages/GenrePage';
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/details/:id" element={<Details />} />
                 <Route path="/albums" element={<AlbumsPage />} />
                 <Route path="/artists" element={<ArtistsPage />} />
+                <Route path="/genre" element={<GenrePage />} />
             </Routes>
             <Audio />
         </div>

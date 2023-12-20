@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import img from '../assets/image/music.png';
 import img2 from '../assets/image/guitar.png';
-import img3 from '../assets/image/music-note.png';
-import img4 from '../assets/image/music (1).png';
-import { songSelector } from '../redux/store';
+import img3 from '../assets/image/cd.png';
+import img4 from '../assets/image/lp.png';
+import { albumSelector } from '../redux/store';
 import { useAppSelector } from '../redux/hooks';
-import songSaga from '../redux/songs/songSaga';
-
-const services = [
-    { title: 'song 1', description: 'Description 1', picture: 'picture1.jpg' },
-    { title: 'song 2', description: 'Description 2', picture: 'picture2.jpg' },
-    { title: 'song 3', description: 'Description 3', picture: 'picture3.jpg' },
-];
+import LoadingScreen from './LoadingScreen';
 
 export const AlbumStatistic = () => {
-    const { songs, isLoading } = useAppSelector(songSelector);
+    const { albums, isLoading } = useAppSelector(albumSelector);
 
     const [searchInput, setSearchInput] = useState('');
 
@@ -24,18 +17,17 @@ export const AlbumStatistic = () => {
     };
     let content;
     if (isLoading) {
-        return <h1>is loading .....</h1>;
-    } else if (!isLoading && songs.length > 0) {
-        let filteredSong = songs.filter((song) => song.title.toLowerCase().includes(searchInput.toLowerCase()));
+        return <LoadingScreen />;
+    } else if (!isLoading && albums.length > 0) {
+        let filteredAlbum = albums.filter((album) => album.album.toLowerCase().includes(searchInput.toLowerCase()));
 
         content = (
             <div className="flex flex-wrap gap-6 md:gap-0 -mx-2 mb-10">
-                {filteredSong.map(
+                {filteredAlbum.map(
                     (item, index) =>
                         item && (
                             <div className="w-full md:w-1/2 md:mt-4 lg:w-1/3 h-auto px-4" key={index}>
-                                <Link
-                                    to={`/details/${item._id}`}
+                                <div
                                     className="
           p-4
           pt-9
@@ -59,11 +51,9 @@ export const AlbumStatistic = () => {
           rounded
         "
                                 >
-                                    <h4 className="relative z-10 font-semibold font-raleway text-2xl text-dark mb-3">{item.title}</h4>
+                                    <h4 className="relative z-10 font-semibold font-raleway text-2xl text-dark mb-3">{item.album}</h4>
                                     <div className=" relative z-10 w-1/3 h-1 bg-secondColor mb-4" />
-                                    <p className=" relative z-10 text-body-color text-sm font-poppins">{item.artist}</p>
-                                    <p className=" relative z-10 text-body-color text-sm font-poppins">{item.album}</p>
-                                    <p className=" relative z-10 text-body-color text-sm font-poppins">{item.genre}</p>
+                                    <p className=" relative z-10 text-body-color text-sm font-poppins">Songs: {item.songCount}</p>
                                     <img
                                         className=" absolute z-0 top-0 left-0 invisible object-center object-cover group-hover:visible h-full w-full bg-black transition duration-200 ease-in-out group-hover:brightness-50 group-hover:opacity-80 group-hover:scale-110"
                                         src={index % 2 === 0 ? img : img2}
@@ -78,7 +68,7 @@ export const AlbumStatistic = () => {
                                             }}
                                         />
                                     </div>
-                                </Link>
+                                </div>
                             </div>
                         )
                 )}
@@ -88,10 +78,8 @@ export const AlbumStatistic = () => {
     return (
         <div className=" relative w-5/6 items-center object-center mx-auto px-4 pt-10 pb-15">
             <div className=" pb-12">
-                <Link to="/new-song" className=" px-10 py-2 rounded text-white bg-custumBlue font-railway-500 ">
-                    Add new Song
-                </Link>
-                <h3 className="mt-10">
+                <h1 className="font-bold pt-10 lg:pt-0 text-mainColor font-railway-500 text-3xl pb-10 underline-offset-2">Albums</h1>
+                <h3 className="">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias voluptates praesentium possimus ex quisquam placeat totam officiis atque facere deserunt sint, debitis, tempore
                     assumenda dignissimos error! Earum veniam error asperiores.
                 </h3>

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import baseURL from '../baseURL';
 import { deleteSongSuccess, getSongSuccess, postSongSuccess, updateSongSuccess } from './songSlice';
+import { toast } from 'react-toastify';
 
 function* fetchSongs(): Generator<any, void, any> {
     try {
@@ -9,6 +10,8 @@ function* fetchSongs(): Generator<any, void, any> {
         const formattedSong = yield songs.data.songs;
         yield put(getSongSuccess(formattedSong));
     } catch (error) {
+        toast.error('Something went wrong');
+        console.log(error);
         // Handle error here
     }
 }
@@ -20,6 +23,8 @@ function* createSong(action: any): Generator<any, void, any> {
         const createdSong = yield response.data.song;
         yield put(postSongSuccess(createdSong));
     } catch (error) {
+        toast.error('Something went wrong');
+        console.log(error);
         // Handle error here
     }
 }
@@ -31,6 +36,8 @@ function* updateSong(action: any): Generator<any, void, any> {
         const updateSong = yield response.data.song;
         yield put(updateSongSuccess(updateSong));
     } catch (error) {
+        toast.error('Something went wrong');
+        console.log(error);
         // Handle error here
     }
 }
@@ -44,6 +51,8 @@ function* deleteSong(action: any): Generator<any, void, any> {
         console.log(updateSong, 'response');
         yield put(deleteSongSuccess(data));
     } catch (error) {
+        toast.error('Something went wrong');
+        console.log(error);
         // Handle error here
     }
 }
