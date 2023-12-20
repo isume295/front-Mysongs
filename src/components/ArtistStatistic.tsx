@@ -6,6 +6,7 @@ import img3 from '../assets/image/artist1.png';
 import img4 from '../assets/image/artist2.png';
 import { artistSelector } from '../redux/store';
 import { useAppSelector } from '../redux/hooks';
+import LoadingScreen from './LoadingScreen';
 
 export const ArtistStatistic = () => {
     const { artists, isLoading } = useAppSelector(artistSelector);
@@ -17,7 +18,7 @@ export const ArtistStatistic = () => {
     };
     let content;
     if (isLoading) {
-        return <h1>is loading .....</h1>;
+        return <LoadingScreen />;
     } else if (!isLoading && artists.length > 0) {
         let filteredArtist = artists.filter((artist) => artist.artist.toLowerCase().includes(searchInput.toLowerCase()));
 
