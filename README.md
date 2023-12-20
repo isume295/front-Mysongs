@@ -12,6 +12,8 @@
 <h1 align="center">MelodyHub Front-end</h1>
 </div>
 
+Please find the Back-end for this project [here](https://github.com/isume295/SongAPI)
+
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
@@ -70,14 +72,13 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LIVE DEMO -->
+LIVE DEMO  -->
 
-<!-- ## 🚀 Live Demo <a name="live-demo"></a>
+## 🚀 Live Demo <a name="live-demo"></a>
 
+-   [Live Demo Link](https://melody-hub-m9rd.onrender.com/)
 
-- [Live Demo Link](https://budget-app-1n0j.onrender.com/)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p> --> -->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
