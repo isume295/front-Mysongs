@@ -6,13 +6,7 @@ import img3 from '../assets/image/music-note.png';
 import img4 from '../assets/image/music (1).png';
 import { songSelector } from '../redux/store';
 import { useAppSelector } from '../redux/hooks';
-import songSaga from '../redux/songs/songSaga';
-
-const services = [
-    { title: 'song 1', description: 'Description 1', picture: 'picture1.jpg' },
-    { title: 'song 2', description: 'Description 2', picture: 'picture2.jpg' },
-    { title: 'song 3', description: 'Description 3', picture: 'picture3.jpg' },
-];
+import LoadingScreen from './LoadingScreen';
 
 export const SongList = () => {
     const { songs, isLoading } = useAppSelector(songSelector);
@@ -24,7 +18,7 @@ export const SongList = () => {
     };
     let content;
     if (isLoading) {
-        return <h1>is loading .....</h1>;
+        return <LoadingScreen />;
     } else if (!isLoading && songs.length > 0) {
         let filteredSong = songs.filter((song) => song.title.toLowerCase().includes(searchInput.toLowerCase()));
 

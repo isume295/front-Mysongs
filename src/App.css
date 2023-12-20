@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+/* wave  */
+
 .loader {
     height: 70px;
     display: flex;
@@ -59,6 +61,8 @@
 .stroke:nth-child(7) {
     animation-delay: 0s;
 }
+
+/* Loading screen */
 
 .containerr {
     display: flex;
