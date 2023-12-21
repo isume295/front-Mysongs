@@ -19,7 +19,9 @@ Please find the Back-end for this project [here](https://github.com/isume295/Son
 # 📗 Table of Contents
 
 -   [📖 About the Project](#about-project)
-    -   [🛠 Built With ](#-built-with-) - [Tech Stack ](#tech-stack-) - [Key Features ](#key-features-)
+    -   [🛠 Built With ](#-built-with-)
+    -   [Tech Stack ](#tech-stack-)
+    -   [Key Features ](#key-features-)
     <!-- -   [🤯 Walk through video ](#walk-through) -->
     -   [🚀 Live Demo ](#-live-demo-)
         -   [💻 Getting Started ](#-getting-started-)
