@@ -45,7 +45,7 @@ export const Hero = () => {
                         <div className="container relative mx-auto">
                             <div className="items-center flex flex-wrap">
                                 <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto flex flex-col justify-center items-center text-center">
-                                    <div className="pr-12">
+                                    <div className="">
                                         <h1 className="text-white font-semibold text-5xl"> The Best of the Best!</h1>
                                         <p className="mt-4 text-lg mb-4 text-gray-200">
                                             Essential Music Collections: A handpicked selection of timeless classics, chart-topping hits, and hidden gems, curated for the ultimate music aficionado's
