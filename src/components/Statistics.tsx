@@ -1,12 +1,13 @@
 import React from 'react';
 import { useAppSelector } from '../redux/hooks';
 import { statisticsSelector } from '../redux/store';
+import LoadingScreen from './LoadingScreen';
 
 export const Statistics = () => {
     const { statistics, isLoading } = useAppSelector(statisticsSelector);
     let content;
     if (isLoading) {
-        return <h1>is loading .....</h1>;
+        return <LoadingScreen />;
     } else if (!isLoading && statistics.length > 0) {
         content = (
             <div className="grid w-full grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-y-8">
