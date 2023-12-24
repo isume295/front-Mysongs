@@ -29,7 +29,6 @@ Please find the Back-end for this project [here](https://github.com/isume295/Son
     -   [Setup](#setup)
     -   [Install](#install)
     -   [Usage](#usage)
-    -   [Run tests](#run-tests)
 -   [👥 Author ](#-author-)
 -   [🔭 Future Features ](#-future-features-)
 -   [🤝 Contributing ](#-contributing-)
