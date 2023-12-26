@@ -9,7 +9,7 @@ import { useAppSelector } from '../redux/hooks';
 import LoadingScreen from './LoadingScreen';
 
 export const GenreStatistic = () => {
-    const { genres, isLoading } = useAppSelector(genreSelector);
+    const { genres, isLoading, errMsg } = useAppSelector(genreSelector);
 
     const [searchInput, setSearchInput] = useState('');
 
@@ -79,6 +79,8 @@ export const GenreStatistic = () => {
                 )}
             </div>
         );
+    } else if (!isLoading && errMsg !== '') {
+        content = <h1 className="text-2xl font-medium text-red-600 text-center w-full">Couldn't refresh {errMsg}</h1>;
     }
     return (
         <div className=" relative w-5/6 items-center object-center mx-auto px-4 pt-10 pb-15 mb-10">

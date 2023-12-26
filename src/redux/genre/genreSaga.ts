@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import baseURL from '../baseURL';
-import { getGenreSuccess } from './genreSlice';
+import { getGenreFailure, getGenreSuccess } from './genreSlice';
 import { toast } from 'react-toastify';
 const url = `${baseURL}/arti`;
 
@@ -10,8 +10,9 @@ function* fetchGenre(): Generator<any, void, any> {
         const genre = yield call(() => axios.get(url));
         const formattedGenre = yield genre.data;
         yield put(getGenreSuccess(formattedGenre));
-    } catch (error) {
-              toast.error('Something went wrong');
+    } catch (error: any) {
+        toast.error('Something went wrong');
+        yield put(getGenreFailure(error.message));
         console.log(error);
     }
 }

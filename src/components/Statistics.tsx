@@ -4,7 +4,7 @@ import { statisticsSelector } from '../redux/store';
 import LoadingScreen from './LoadingScreen';
 
 export const Statistics = () => {
-    const { statistics, isLoading } = useAppSelector(statisticsSelector);
+    const { statistics, isLoading, errMsg } = useAppSelector(statisticsSelector);
     let content;
     if (isLoading) {
         return <LoadingScreen />;
@@ -41,6 +41,8 @@ export const Statistics = () => {
                 </div>
             </div>
         );
+    } else if (!isLoading && errMsg !== '') {
+        content = <h1 className="text-2xl font-medium text-red-600 text-center w-full">Couldn't refresh {errMsg}</h1>;
     }
 
     return (

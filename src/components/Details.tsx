@@ -8,6 +8,7 @@ import { songSelector } from '../redux/store';
 import { deleteSongPending, getSongPending, updateSongPending } from '../redux/songs/songSlice';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
+import LoadingScreen from './LoadingScreen';
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
@@ -19,7 +20,7 @@ const validationSchema = Yup.object().shape({
 export default function Details() {
     const navigate = useNavigate();
     const { id } = useParams();
-    const { songs, isLoading } = useAppSelector(songSelector);
+    const { songs, isLoading, isSuccessful, isLoadingBtn } = useAppSelector(songSelector);
     const dispatch = useAppDispatch();
 
     const [open, setOpen] = useState(null);
@@ -39,15 +40,15 @@ export default function Details() {
     }, [dispatch, songs.length]);
     // delete a song
     const handleDelete = async (id: any) => {
-        try {
-            console.log(id);
-            dispatch(deleteSongPending(id));
-            setOpen(null);
-            toast.success('you have successfully deleted a Song');
-            navigate('/songs');
-        } catch (error: any) {
-            toast.error(error.message);
-        }
+        // try {
+        console.log(id);
+        dispatch(deleteSongPending(id));
+        setOpen(null);
+        toast.success('you have successfully deleted a Song');
+        navigate('/songs');
+        // } catch (error: any) {
+        //     toast.error(error.message);
+        // }
     };
     // update a song
     const onSubmit = async (values: any, { setSubmitting, setErrors }: any): Promise<void> => {
@@ -55,10 +56,12 @@ export default function Details() {
             const updatedValues = { ...values, _id: id };
             console.log(updatedValues);
             dispatch(updateSongPending(updatedValues));
-            toast.success('successfully added new song');
             setSubmitting(false);
-            navigate('/songs');
-        } catch (error) {
+            if (!isLoadingBtn) {
+                navigate('/songs');
+            }
+            toast.success('you have successfully added a new song');
+        } catch (error: any) {
             setSubmitting(false);
             setErrors(error);
             toast.error('Something went wrong');
@@ -67,7 +70,7 @@ export default function Details() {
 
     let content;
     if (isLoading) {
-        return <h1>loading</h1>;
+        return <LoadingScreen />;
     } else if (!isLoading && songs.length > 0) {
         const filteredSongs = songs.filter((item) => item._id === id);
         content = (
@@ -157,7 +160,7 @@ export default function Details() {
                             className="bg-mainColor flex gap-2 justify-center items-center mt-6 ml-5 text-white active:bg-lightMain font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                             type="submit"
                         >
-                            {/* {isLoading ? <ButtonLoadingScreen /> : ''} */}
+                            {/* {isSuccessful ? <ButtonLoadingScreen /> : ''} */}
                             <span>Update</span>
                         </button>
                     </Form>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import baseURL from '../baseURL';
-import { getArtistSuccess } from './artistSlice';
+import { getArtistFailure, getArtistSuccess } from './artistSlice';
 import { toast } from 'react-toastify';
 const url = `${baseURL}/artist`;
 
@@ -10,8 +10,9 @@ function* fetchArtist(): Generator<any, void, any> {
         const artist = yield call(() => axios.get(url));
         const formattedArtist = yield artist.data;
         yield put(getArtistSuccess(formattedArtist));
-    } catch (error) {
+    } catch (error: any) {
         toast.error('Something went wrong');
+        yield put(getArtistFailure(error.message));
         console.log(error);
     }
 }
