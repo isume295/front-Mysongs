@@ -40,15 +40,15 @@ export default function Details() {
     }, [dispatch, songs.length]);
     // delete a song
     const handleDelete = async (id: any) => {
-        // try {
-        console.log(id);
-        dispatch(deleteSongPending(id));
-        setOpen(null);
-        toast.success('you have successfully deleted a Song');
-        navigate('/songs');
-        // } catch (error: any) {
-        //     toast.error(error.message);
-        // }
+        try {
+            console.log(id);
+            dispatch(deleteSongPending(id));
+            setOpen(null);
+            toast.success('you have successfully deleted a Song');
+            navigate('/songs');
+        } catch (error: any) {
+            toast.error(error.message);
+        }
     };
     // update a song
     const onSubmit = async (values: any, { setSubmitting, setErrors }: any): Promise<void> => {
@@ -60,7 +60,7 @@ export default function Details() {
             if (!isLoadingBtn) {
                 navigate('/songs');
             }
-            toast.success('you have successfully added a new song');
+            toast.success('you have successfully Updated a song');
         } catch (error: any) {
             setSubmitting(false);
             setErrors(error);
