@@ -113,6 +113,7 @@ For more information on how to clone or fork a repository:
 ### Install
 
 -   Run `yarn install`
+-   The project should run on http://localhost:3000
 
 ### Usage
 
